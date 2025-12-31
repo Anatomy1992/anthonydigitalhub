@@ -53,24 +53,28 @@ const projects = [
     description: "Full-featured online store with real-time inventory",
     image: project1,
     tags: ["React", "Node.js", "MongoDB"],
+    link: "/projects/ecommerce-platform",
   },
   {
     title: "Analytics Dashboard",
     description: "Data visualization platform for business insights",
     image: project2,
     tags: ["TypeScript", "D3.js", "PostgreSQL"],
+    link: "/projects/analytics-dashboard",
   },
   {
     title: "Mobile App UI",
     description: "Cross-platform fitness tracking application",
     image: project3,
     tags: ["React Native", "Firebase"],
+    link: "/projects/mobile-app",
   },
   {
     title: "Corporate Website",
     description: "Modern corporate site with CMS integration",
     image: project4,
     tags: ["Next.js", "Sanity CMS", "Tailwind"],
+    link: "/projects/corporate-website",
   },
 ];
 
@@ -313,8 +317,10 @@ const Index = () => {
                       ))}
                     </div>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                      <Button variant="outline" size="sm">
-                        View Project <ArrowRight size={14} className="ml-1" />
+                      <Button variant="outline" size="sm" asChild>
+                        <Link to={project.link}>
+                          View Project <ArrowRight size={14} className="ml-1" />
+                        </Link>
                       </Button>
                     </motion.div>
                   </div>

@@ -7,6 +7,7 @@ import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import developerImage from "@/assets/developer-illustration.jpg";
+import bannerBg from "@/assets/banner-bg.jpg";
 
 const workflowSteps = [
   { step: "01", title: "Planning", description: "Understanding your goals and requirements", icon: Lightbulb },
@@ -46,15 +47,23 @@ const About = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="container-custom">
+      <section
+        className="relative pt-32 pb-20"
+        style={{
+          backgroundImage: `url(${bannerBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/30" />
+        <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4 backdrop-blur-sm">
               About Me
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
