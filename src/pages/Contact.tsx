@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import { ArrowRight, Calendar, Facebook, Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import bannerBg from "@/assets/banner-bg.jpg";
 
 const projectTypes = [
   "Web Design",
@@ -33,32 +35,57 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          project_type: formData.projectType,
+          message: formData.message.trim(),
+        });
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", projectType: "", message: "" });
-    setIsSubmitting(false);
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+      });
+
+      setFormData({ name: "", email: "", projectType: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="container-custom">
+      {/* Hero Section with Banner */}
+      <section
+        className="relative pt-32 pb-20"
+        style={{
+          backgroundImage: `url(${bannerBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/30" />
+        <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4 backdrop-blur-sm">
               Contact
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -92,6 +119,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
+                      maxLength={100}
                       className="bg-secondary border-border"
                     />
                   </div>
@@ -107,6 +135,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
+                      maxLength={255}
                       className="bg-secondary border-border"
                     />
                   </div>
@@ -142,6 +171,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
+                      maxLength={1000}
                       rows={5}
                       className="bg-secondary border-border resize-none"
                     />
@@ -183,7 +213,8 @@ const Contact = () => {
 
                 <StaggerContainer className="space-y-4">
                   <StaggerItem>
-                    <motion.div
+                    <motion.a
+                      href="mailto:ayodeleanthonyo@gmail.com"
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 border border-border"
                     >
@@ -192,11 +223,29 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-medium text-foreground">Email</h4>
-                        <a href="mailto:hello@anthonydigital.com" className="text-muted-foreground hover:text-primary transition-colors">
-                          hello@anthonydigital.com
-                        </a>
+                        <span className="text-muted-foreground hover:text-primary transition-colors">
+                          ayodeleanthonyo@gmail.com
+                        </span>
                       </div>
-                    </motion.div>
+                    </motion.a>
+                  </StaggerItem>
+
+                  <StaggerItem>
+                    <motion.a
+                      href="tel:+2349057707072"
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 border border-border"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <Phone className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-foreground">Phone</h4>
+                        <span className="text-muted-foreground hover:text-primary transition-colors">
+                          +234 905 770 7072
+                        </span>
+                      </div>
+                    </motion.a>
                   </StaggerItem>
 
                   <StaggerItem>
@@ -209,7 +258,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-medium text-foreground">Location</h4>
-                        <p className="text-muted-foreground">Remote / Worldwide</p>
+                        <p className="text-muted-foreground">Lagos, Nigeria</p>
                       </div>
                     </motion.div>
                   </StaggerItem>
@@ -222,22 +271,22 @@ const Contact = () => {
                   </h3>
                   <div className="flex gap-4">
                     <motion.a
-                      href="https://github.com"
+                      href="https://facebook.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -3 }}
                       className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
                     >
-                      <Github size={24} />
+                      <Facebook size={24} />
                     </motion.a>
                     <motion.a
-                      href="https://linkedin.com"
+                      href="https://instagram.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -3 }}
                       className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
                     >
-                      <Linkedin size={24} />
+                      <Instagram size={24} />
                     </motion.a>
                     <motion.a
                       href="#"
@@ -279,7 +328,7 @@ const Contact = () => {
                 </p>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Button variant="hero" size="xl" asChild>
-                    <a href="mailto:hello@anthonydigital.com">
+                    <a href="mailto:ayodeleanthonyo@gmail.com">
                       Request a Quote
                       <ArrowRight className="ml-2" size={20} />
                     </a>
