@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -17,28 +18,40 @@ const Footer = () => {
               businesses thrive in the digital age.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://github.com"
+              <motion.a
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
               >
-                <Github size={20} />
-              </a>
-              <a
+                <Facebook size={20} />
+              </motion.a>
+              <motion.a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+              >
+                <Instagram size={20} />
+              </motion.a>
+              <motion.a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
               >
                 <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:hello@anthonydigital.com"
+              </motion.a>
+              <motion.a
+                href="mailto:ayodeleanthonyo@gmail.com"
+                whileHover={{ scale: 1.1, y: -2 }}
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
               >
                 <Mail size={20} />
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -50,7 +63,7 @@ const Footer = () => {
                 <li key={link}>
                   <Link
                     to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                    className="text-muted-foreground hover:text-primary hover:translate-x-1 transition-all duration-300 text-sm inline-block"
                   >
                     {link}
                   </Link>
@@ -72,7 +85,7 @@ const Footer = () => {
                 <li key={service}>
                   <Link
                     to="/services"
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                    className="text-muted-foreground hover:text-primary hover:translate-x-1 transition-all duration-300 text-sm inline-block"
                   >
                     {service}
                   </Link>
@@ -85,13 +98,27 @@ const Footer = () => {
           <div>
             <h4 className="text-foreground font-semibold mb-4">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-muted-foreground text-sm">
-                <Mail size={16} className="text-primary" />
-                hello@anthonydigital.com
+              <li>
+                <a
+                  href="mailto:ayodeleanthonyo@gmail.com"
+                  className="flex items-center gap-2 text-muted-foreground text-sm hover:text-primary transition-colors group"
+                >
+                  <Mail size={16} className="text-primary group-hover:scale-110 transition-transform" />
+                  ayodeleanthonyo@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+2349057707072"
+                  className="flex items-center gap-2 text-muted-foreground text-sm hover:text-primary transition-colors group"
+                >
+                  <Phone size={16} className="text-primary group-hover:scale-110 transition-transform" />
+                  +234 905 770 7072
+                </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground text-sm">
                 <MapPin size={16} className="text-primary" />
-                Remote / Worldwide
+                Lagos, Nigeria
               </li>
             </ul>
           </div>
@@ -104,13 +131,13 @@ const Footer = () => {
           <div className="flex gap-6">
             <a
               href="#"
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors hover:underline"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors hover:underline"
             >
               Terms of Service
             </a>
