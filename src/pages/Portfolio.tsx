@@ -4,10 +4,13 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import bannerBg from "@/assets/banner-bg.jpg";
+import project1 from "@/assets/project-1.jpg";
+import project2 from "@/assets/project-2.jpg";
+import project3 from "@/assets/project-3.jpg";
+import project4 from "@/assets/project-4.jpg";
 
 // Portfolio categories and projects
 const categories = [
@@ -26,7 +29,7 @@ const portfolioProjects = [
     title: "ShopEase E-Commerce",
     category: "E-Commerce",
     description: "A full-featured online shopping platform with real-time inventory management, secure payment processing, and personalized recommendations.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    image: project1,
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     features: ["User Authentication", "Shopping Cart", "Payment Integration", "Order Tracking"],
   },
@@ -35,7 +38,7 @@ const portfolioProjects = [
     title: "FitTrack Mobile UI",
     category: "Mobile App",
     description: "Cross-platform fitness tracking application with workout plans, progress tracking, and social features for motivation.",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
+    image: project2,
     tags: ["React Native", "Firebase", "Redux"],
     features: ["Workout Tracking", "Progress Charts", "Social Feed", "Push Notifications"],
   },
@@ -44,7 +47,7 @@ const portfolioProjects = [
     title: "TechCorp Website",
     category: "Corporate Website",
     description: "Modern corporate website for a technology company featuring dynamic content management and multilingual support.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    image: project3,
     tags: ["Next.js", "Sanity CMS", "Tailwind"],
     features: ["CMS Integration", "SEO Optimized", "Multi-language", "Blog System"],
   },
@@ -53,7 +56,7 @@ const portfolioProjects = [
     title: "DataViz Dashboard",
     category: "Analytics Dashboard",
     description: "Business intelligence dashboard with real-time data visualization, custom reports, and automated insights.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    image: project4,
     tags: ["TypeScript", "D3.js", "PostgreSQL"],
     features: ["Real-time Charts", "Custom Reports", "Data Export", "Team Collaboration"],
   },
@@ -62,7 +65,7 @@ const portfolioProjects = [
     title: "Fashion Boutique",
     category: "E-Commerce",
     description: "Luxury fashion e-commerce platform with AR try-on features, size recommendations, and influencer integration.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+    image: project2,
     tags: ["Vue.js", "Laravel", "MySQL"],
     features: ["Virtual Try-On", "Size Guide", "Wishlist", "Influencer Shop"],
   },
@@ -71,7 +74,7 @@ const portfolioProjects = [
     title: "TaskFlow SaaS",
     category: "SaaS Platform",
     description: "Project management SaaS with kanban boards, time tracking, team collaboration, and integration capabilities.",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop",
+    image: project3,
     tags: ["React", "Node.js", "PostgreSQL", "Redis"],
     features: ["Kanban Boards", "Time Tracking", "Team Chat", "API Integrations"],
   },
@@ -80,7 +83,7 @@ const portfolioProjects = [
     title: "HealthCare Portal",
     category: "Corporate Website",
     description: "Healthcare provider portal with appointment scheduling, patient records, and telehealth integration.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    image: project1,
     tags: ["React", "Express", "MongoDB"],
     features: ["Appointment Booking", "Patient Portal", "Telehealth", "Secure Messaging"],
   },
@@ -89,7 +92,7 @@ const portfolioProjects = [
     title: "FinanceTracker App",
     category: "Mobile App",
     description: "Personal finance mobile application with budget tracking, investment monitoring, and financial insights.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
+    image: project4,
     tags: ["Flutter", "Firebase", "Plaid API"],
     features: ["Budget Tracking", "Investment View", "Bill Reminders", "Financial Reports"],
   },
@@ -98,7 +101,7 @@ const portfolioProjects = [
     title: "Marketing Analytics",
     category: "Analytics Dashboard",
     description: "Marketing performance dashboard with campaign tracking, ROI analysis, and automated reporting.",
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&h=600&fit=crop",
+    image: project1,
     tags: ["React", "Python", "AWS"],
     features: ["Campaign Tracking", "ROI Analysis", "A/B Testing", "Auto Reports"],
   },
@@ -107,7 +110,7 @@ const portfolioProjects = [
     title: "Startup Landing",
     category: "Landing Page",
     description: "High-converting startup landing page with lead capture, testimonials, and interactive product demos.",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop",
+    image: project3,
     tags: ["Next.js", "Framer Motion", "Tailwind"],
     features: ["Lead Capture", "A/B Testing", "Analytics", "CRM Integration"],
   },
