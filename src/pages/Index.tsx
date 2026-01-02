@@ -13,6 +13,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import { StatsCounter } from "@/components/AnimatedCounter";
 
 // Tech Stack Data
 const techStack = {
@@ -53,28 +54,28 @@ const projects = [
     description: "Full-featured online store with real-time inventory",
     image: project1,
     tags: ["React", "Node.js", "MongoDB"],
-    link: "/projects/ecommerce-platform",
+    link: "/portfolio",
   },
   {
     title: "Analytics Dashboard",
     description: "Data visualization platform for business insights",
     image: project2,
     tags: ["TypeScript", "D3.js", "PostgreSQL"],
-    link: "/projects/analytics-dashboard",
+    link: "/portfolio",
   },
   {
     title: "Mobile App UI",
     description: "Cross-platform fitness tracking application",
     image: project3,
     tags: ["React Native", "Firebase"],
-    link: "/projects/mobile-app",
+    link: "/portfolio",
   },
   {
     title: "Corporate Website",
     description: "Modern corporate site with CMS integration",
     image: project4,
     tags: ["Next.js", "Sanity CMS", "Tailwind"],
-    link: "/projects/corporate-website",
+    link: "/portfolio",
   },
 ];
 
@@ -264,9 +265,9 @@ const Index = () => {
                   </p>
                   <Link
                     to="/services"
-                    className="inline-flex items-center text-primary font-medium mt-4 hover:gap-2 transition-all"
+                    className="inline-flex items-center text-primary font-medium mt-4 hover:gap-2 transition-all group"
                   >
-                    Learn More <ArrowRight size={16} className="ml-1" />
+                    Learn More <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
               </StaggerItem>
@@ -275,8 +276,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Work */}
+      {/* Stats Counter Section */}
       <section className="section-padding bg-card">
+        <div className="container-custom">
+          <FadeIn>
+            <div className="card-elevated p-12 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
+              <div className="relative z-10">
+                <div className="text-center mb-10">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    Achievements
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                    Numbers That Speak
+                  </h2>
+                </div>
+                <StatsCounter className="max-w-2xl mx-auto" />
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Featured Work */}
+      <section className="section-padding">
         <div className="container-custom">
           <SectionHeader
             label="Portfolio"
@@ -300,7 +323,7 @@ const Index = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground text-sm mb-4">
@@ -310,16 +333,16 @@ const Index = () => {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium"
+                          className="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                      <Button variant="outline" size="sm" asChild>
+                      <Button variant="outline" size="sm" asChild className="group/btn">
                         <Link to={project.link}>
-                          View Project <ArrowRight size={14} className="ml-1" />
+                          View Project <ArrowRight size={14} className="ml-1 group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                       </Button>
                     </motion.div>

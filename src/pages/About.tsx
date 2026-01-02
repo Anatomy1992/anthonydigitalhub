@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
+import { StatsCounter } from "@/components/AnimatedCounter";
 import { Button } from "@/components/ui/button";
 import developerImage from "@/assets/developer-illustration.jpg";
 import bannerBg from "@/assets/banner-bg.jpg";
@@ -108,23 +109,10 @@ const About = () => {
                 <p className="text-muted-foreground mb-4">
                   I specialize in building full-stack web applications that are not only visually stunning but also performant, accessible, and scalable. Every project is an opportunity to solve real problems and create meaningful impact.
                 </p>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-8">
                   When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers.
                 </p>
-                <div className="flex flex-wrap gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">8+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">100+</div>
-                    <div className="text-sm text-muted-foreground">Projects Completed</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">50+</div>
-                    <div className="text-sm text-muted-foreground">Happy Clients</div>
-                  </div>
-                </div>
+                <StatsCounter />
               </div>
             </FadeIn>
           </div>

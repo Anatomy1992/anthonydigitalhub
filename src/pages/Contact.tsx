@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Facebook, Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ArrowRight, Calendar, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
@@ -287,6 +287,15 @@ const Contact = () => {
                       className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
                     >
                       <Instagram size={24} />
+                    </motion.a>
+                    <motion.a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                    >
+                      <Linkedin size={24} />
                     </motion.a>
                     <motion.a
                       href="#"
