@@ -5,10 +5,10 @@ import { ArrowRight, Code2, Star } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import developerImage from "@/assets/developer-illustration.jpg";
 import testimonialsBg from "@/assets/testimonials-bg.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import ecommerce1 from "@/assets/portfolio/ecommerce-1.jpg";
+import mobile1 from "@/assets/portfolio/mobile-1.jpg";
+import corporate1 from "@/assets/portfolio/corporate-1.jpg";
+import dashboard1 from "@/assets/portfolio/dashboard-1.jpg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
@@ -52,28 +52,28 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description: "Full-featured online store with real-time inventory",
-    image: project1,
+    image: ecommerce1,
     tags: ["React", "Node.js", "MongoDB"],
     link: "/portfolio",
   },
   {
     title: "Analytics Dashboard",
     description: "Data visualization platform for business insights",
-    image: project2,
+    image: dashboard1,
     tags: ["TypeScript", "D3.js", "PostgreSQL"],
     link: "/portfolio",
   },
   {
     title: "Mobile App UI",
     description: "Cross-platform fitness tracking application",
-    image: project3,
+    image: mobile1,
     tags: ["React Native", "Firebase"],
     link: "/portfolio",
   },
   {
     title: "Corporate Website",
     description: "Modern corporate site with CMS integration",
-    image: project4,
+    image: corporate1,
     tags: ["Next.js", "Sanity CMS", "Tailwind"],
     link: "/portfolio",
   },
