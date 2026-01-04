@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Portfolio from "./pages/Portfolio";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import EcommercePlatform from "./pages/projects/EcommercePlatform";
 import AnalyticsDashboard from "./pages/projects/AnalyticsDashboard";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/projects/ecommerce-platform" element={<EcommercePlatform />} />
           <Route path="/projects/analytics-dashboard" element={<AnalyticsDashboard />} />
           <Route path="/projects/mobile-app" element={<MobileAppUI />} />
