@@ -7,6 +7,10 @@ import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import bannerBg from "@/assets/banner-bg.jpg";
+import uiuxImage from "@/assets/services/ui-ux-design.jpg";
+import webdevImage from "@/assets/services/web-development.jpg";
+import fullstackImage from "@/assets/services/fullstack.jpg";
+import ecommerceImage from "@/assets/services/ecommerce.jpg";
 
 const services = [
   {
@@ -14,24 +18,28 @@ const services = [
     title: "Web Design (UI/UX)",
     description: "Creating beautiful, intuitive interfaces that users love. From wireframes to high-fidelity designs, I focus on user experience that converts.",
     features: ["Responsive Design", "User Research", "Wireframing", "Prototyping", "Brand Integration"],
+    image: uiuxImage,
   },
   {
     icon: Code2,
     title: "Web App Development",
     description: "Building robust web applications with modern frameworks. Custom solutions that scale with your business needs.",
     features: ["React/Vue.js Apps", "API Development", "Real-time Features", "Third-party Integrations", "Performance Optimization"],
+    image: webdevImage,
   },
   {
     icon: Server,
     title: "Full-Stack Solutions",
     description: "End-to-end development from database architecture to frontend deployment. Complete solutions under one roof.",
     features: ["System Architecture", "Database Design", "Backend APIs", "Frontend Development", "DevOps & Deployment"],
+    image: fullstackImage,
   },
   {
     icon: ShoppingCart,
     title: "E-commerce & CMS",
     description: "Custom online stores and content management systems. From WordPress themes to headless commerce solutions.",
     features: ["Custom Themes", "Payment Integration", "Inventory Management", "SEO Optimization", "Analytics Setup"],
+    image: ecommerceImage,
   },
 ];
 
@@ -158,21 +166,15 @@ const Services = () => {
                 <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
                   <motion.div
                     whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 2 : -2 }}
-                    className="card-elevated p-8 relative overflow-hidden"
+                    className="card-elevated relative overflow-hidden rounded-xl"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
-                    <div className="relative grid grid-cols-2 gap-4">
-                      {[Globe, Layout, Smartphone, Database].map((Icon, i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ y: [0, -5, 0] }}
-                          transition={{ duration: 2, delay: i * 0.2, repeat: Infinity }}
-                          className="aspect-square bg-secondary rounded-xl flex items-center justify-center"
-                        >
-                          <Icon className="w-10 h-10 text-primary/60" />
-                        </motion.div>
-                      ))}
-                    </div>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-64 md:h-80 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                   </motion.div>
                 </div>
               </motion.div>
@@ -235,6 +237,17 @@ const Services = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          <div className="text-center mt-10">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="hero" asChild>
+                <Link to="/pricing">
+                  View Detailed Pricing
+                  <ArrowRight className="ml-2" size={18} />
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
