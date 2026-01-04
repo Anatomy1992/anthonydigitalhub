@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
@@ -36,7 +36,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
+      // Store in Supabase
+      const { error: dbError } = await supabase
         .from("contact_submissions")
         .insert({
           name: formData.name.trim(),
@@ -45,7 +46,22 @@ const Contact = () => {
           message: formData.message.trim(),
         });
 
-      if (error) throw error;
+      if (dbError) throw dbError;
+
+      // Send email via edge function
+      const { error: emailError } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          projectType: formData.projectType,
+          message: formData.message.trim(),
+        },
+      });
+
+      if (emailError) {
+        console.error("Email error:", emailError);
+        // Don't throw here - the message was stored, just email failed
+      }
 
       toast({
         title: "Message Sent!",
@@ -54,6 +70,7 @@ const Contact = () => {
 
       setFormData({ name: "", email: "", projectType: "", message: "" });
     } catch (error) {
+      console.error("Form submission error:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -280,7 +297,7 @@ const Contact = () => {
                       <Facebook size={24} />
                     </motion.a>
                     <motion.a
-                      href="https://instagram.com"
+                      href="https://www.instagram.com/tonydigitalmarketer/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -3 }}
@@ -289,7 +306,7 @@ const Contact = () => {
                       <Instagram size={24} />
                     </motion.a>
                     <motion.a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/anthony-oluwatobi-ayodele-7a2882278/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -3 }}
@@ -298,20 +315,20 @@ const Contact = () => {
                       <Linkedin size={24} />
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="mailto:ayodeleanthonyo@gmail.com"
                       whileHover={{ scale: 1.1, y: -3 }}
                       className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
                     >
-                      <Calendar size={24} />
+                      <Mail size={24} />
                     </motion.a>
                   </div>
                 </div>
 
-                {/* Calendly Button */}
+                {/* Schedule Call Button */}
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button variant="outline" size="lg" className="w-full" asChild>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2" size={18} />
+                    <a href="mailto:ayodeleanthonyo@gmail.com?subject=Schedule a Call">
+                      <Mail className="mr-2" size={18} />
                       Schedule a Call
                     </a>
                   </Button>

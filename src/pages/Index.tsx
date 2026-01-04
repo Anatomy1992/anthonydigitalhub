@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Star } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-developer-video.mp4";
+import heroDev1 from "@/assets/hero-developer-1.jpg";
+import heroDev2 from "@/assets/hero-developer-2.jpg";
 import developerImage from "@/assets/developer-illustration.jpg";
 import testimonialsBg from "@/assets/testimonials-bg.jpg";
 import ecommerce1 from "@/assets/portfolio/ecommerce-1.jpg";
@@ -14,6 +16,14 @@ import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { StatsCounter } from "@/components/AnimatedCounter";
+import HeroSlider from "@/components/HeroSlider";
+
+// Hero slides data
+const heroSlides = [
+  { type: "video" as const, src: heroVideo },
+  { type: "image" as const, src: heroDev1 },
+  { type: "image" as const, src: heroDev2 },
+];
 
 // Tech Stack Data
 const techStack = {
@@ -114,18 +124,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section with Slider */}
       <section className="relative min-h-screen flex items-center pt-16">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/30" />
-        </div>
+        <HeroSlider slides={heroSlides} interval={15000} />
 
         <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-3xl">
@@ -449,14 +450,16 @@ const Index = () => {
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-semibold">
-                      {testimonial.name.charAt(0)}
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="text-primary font-semibold">
+                        {testimonial.name.charAt(0)}
+                      </span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground">
+                      <h4 className="font-semibold text-foreground text-sm">
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-xs">
                         {testimonial.role}
                       </p>
                     </div>
@@ -472,23 +475,25 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-custom">
           <FadeIn>
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Let's Build Something{" "}
-                <span className="gradient-text">Great Together</span>
-              </h2>
-              <p className="text-muted-foreground text-lg mb-8">
-                Ready to bring your ideas to life? Let's collaborate and create
-                something extraordinary.
-              </p>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/contact">
-                    Start Your Project
-                    <ArrowRight className="ml-2" size={20} />
-                  </Link>
-                </Button>
-              </motion.div>
+            <div className="card-elevated p-12 text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Ready to Start Your Project?
+                </h2>
+                <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  Let's collaborate to bring your vision to life. From concept to
+                  deployment, I'm here to help you succeed.
+                </p>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  <Button variant="hero" size="xl" asChild>
+                    <Link to="/contact">
+                      Get in Touch
+                      <ArrowRight className="ml-2" size={20} />
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
             </div>
           </FadeIn>
         </div>
