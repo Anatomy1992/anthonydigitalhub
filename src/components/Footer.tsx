@@ -28,7 +28,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </motion.a>
               <motion.a
-                href="https://instagram.com"
+                href="https://www.instagram.com/tonydigitalmarketer/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -37,7 +37,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/anthony-oluwatobi-ayodele-7a2882278/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
