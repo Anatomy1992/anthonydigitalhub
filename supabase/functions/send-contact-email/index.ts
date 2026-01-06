@@ -28,27 +28,47 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Received contact form submission:", { name, email, projectType });
 
     // Send notification email to Anthony
+    // Using reply-to header so you can reply directly to the customer
     const notificationEmail = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "Anthony Digital Hub <onboarding@resend.dev>",
       to: ["ayodeleanthonyo@gmail.com"],
-      subject: `New Contact Form Submission - ${projectType}`,
+      reply_to: email,
+      subject: `[Anthony Digital Hub] New Inquiry from ${name} - ${projectType}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #3B82F6; border-bottom: 2px solid #3B82F6; padding-bottom: 10px;">New Contact Form Submission</h1>
-          
-          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #1e293b; margin-top: 0;">Contact Details</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Project Type:</strong> ${projectType}</p>
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
+          <div style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
+            <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">Anthony Digital Hub</p>
           </div>
           
-          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #1e293b; margin-top: 0;">Message</h2>
-            <p style="white-space: pre-wrap;">${message}</p>
+          <div style="background-color: #f8fafc; padding: 25px; border: 1px solid #e2e8f0; border-top: none;">
+            <h2 style="color: #1e293b; margin: 0 0 15px 0; font-size: 18px;">📋 Contact Details</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; width: 120px;">Name:</td>
+                <td style="padding: 8px 0; color: #1e293b; font-weight: 600;">${name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b;">Email:</td>
+                <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #3B82F6; text-decoration: none;">${email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b;">Project Type:</td>
+                <td style="padding: 8px 0; color: #1e293b; font-weight: 600;">${projectType}</td>
+              </tr>
+            </table>
           </div>
           
-          <p style="color: #64748b; font-size: 12px; margin-top: 30px;">
+          <div style="background-color: #ffffff; padding: 25px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
+            <h2 style="color: #1e293b; margin: 0 0 15px 0; font-size: 18px;">💬 Message</h2>
+            <p style="white-space: pre-wrap; color: #334155; line-height: 1.6; margin: 0; padding: 15px; background-color: #f8fafc; border-radius: 8px;">${message}</p>
+          </div>
+          
+          <div style="text-align: center; padding: 20px;">
+            <a href="mailto:${email}?subject=Re: Your Inquiry - Anthony Digital Hub" style="display: inline-block; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: #ffffff; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600;">Reply to ${name}</a>
+          </div>
+          
+          <p style="color: #94a3b8; font-size: 12px; text-align: center; margin-top: 20px;">
             This email was sent from your portfolio contact form at Anthony Digital Hub.
           </p>
         </div>
@@ -58,40 +78,53 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Notification email sent successfully:", notificationEmail);
 
     // Send confirmation email to the user
+    // Adding reply-to so they can reply directly
     const confirmationEmail = await resend.emails.send({
       from: "Anthony Digital Hub <onboarding@resend.dev>",
       to: [email],
-      subject: "Thank you for reaching out! - Anthony Digital Hub",
+      reply_to: "ayodeleanthonyo@gmail.com",
+      subject: `Thank you for contacting Anthony Digital Hub, ${name}!`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #3B82F6; border-bottom: 2px solid #3B82F6; padding-bottom: 10px;">Thank You, ${name}!</h1>
-          
-          <p style="font-size: 16px; color: #334155; line-height: 1.6;">
-            I've received your message regarding <strong>${projectType}</strong> and I'm excited to learn more about your project!
-          </p>
-          
-          <p style="font-size: 16px; color: #334155; line-height: 1.6;">
-            I'll review your inquiry and get back to you within 24 hours. In the meantime, feel free to check out my portfolio to see some of my recent work.
-          </p>
-          
-          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #1e293b; margin-top: 0;">Your Message:</h3>
-            <p style="white-space: pre-wrap; color: #64748b;">${message}</p>
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
+          <div style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Thank You, ${name}! 🎉</h1>
+            <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">Your message has been received</p>
           </div>
           
-          <p style="font-size: 16px; color: #334155; line-height: 1.6;">
-            Best regards,<br>
-            <strong>Anthony Ayodele</strong><br>
-            Full-Stack Web Developer
-          </p>
-          
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-            <p style="color: #64748b; font-size: 14px;">
-              📧 ayodeleanthonyo@gmail.com<br>
-              📱 +234 905 770 7072<br>
-              📍 Lagos, Nigeria
+          <div style="background-color: #f8fafc; padding: 25px; border: 1px solid #e2e8f0; border-top: none;">
+            <p style="font-size: 16px; color: #334155; line-height: 1.6; margin: 0 0 15px 0;">
+              I've received your message regarding <strong style="color: #3B82F6;">${projectType}</strong> and I'm excited to learn more about your project!
+            </p>
+            
+            <p style="font-size: 16px; color: #334155; line-height: 1.6; margin: 0;">
+              I'll review your inquiry and get back to you within <strong>24 hours</strong>. In the meantime, feel free to check out my portfolio to see some of my recent work.
             </p>
           </div>
+          
+          <div style="background-color: #ffffff; padding: 25px; border: 1px solid #e2e8f0; border-top: none;">
+            <h3 style="color: #1e293b; margin: 0 0 15px 0; font-size: 16px;">📝 Your Message:</h3>
+            <p style="white-space: pre-wrap; color: #64748b; line-height: 1.6; margin: 0; padding: 15px; background-color: #f8fafc; border-radius: 8px; font-style: italic;">${message}</p>
+          </div>
+          
+          <div style="background-color: #f8fafc; padding: 25px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
+            <p style="font-size: 16px; color: #334155; line-height: 1.6; margin: 0 0 15px 0;">
+              Best regards,<br>
+              <strong style="color: #1e293b;">Anthony Ayodele</strong><br>
+              <span style="color: #64748b;">Full-Stack Web Developer</span>
+            </p>
+            
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 15px;">
+              <p style="color: #64748b; font-size: 14px; margin: 0;">
+                📧 <a href="mailto:ayodeleanthonyo@gmail.com" style="color: #3B82F6; text-decoration: none;">ayodeleanthonyo@gmail.com</a><br>
+                📱 <a href="tel:+2349057707072" style="color: #3B82F6; text-decoration: none;">+234 905 770 7072</a><br>
+                📍 Lagos, Nigeria
+              </p>
+            </div>
+          </div>
+          
+          <p style="color: #94a3b8; font-size: 12px; text-align: center; margin-top: 20px;">
+            © ${new Date().getFullYear()} Anthony Digital Hub. All rights reserved.
+          </p>
         </div>
       `,
     });
