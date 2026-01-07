@@ -135,7 +135,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
                 Available for Projects
               </span>
             </motion.div>
@@ -154,7 +154,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-muted-foreground mb-8 max-w-2xl"
+              className="text-xl text-white mb-8 max-w-2xl"
             >
               I build scalable, high-performance digital solutions that help
               businesses thrive in the modern digital landscape.
@@ -318,7 +318,7 @@ const Index = () => {
                   <div className="relative overflow-hidden aspect-video">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} - ${project.description} by Anthony Digital Hub, professional web developer`}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -404,7 +404,7 @@ const Index = () => {
                 >
                   <img
                     src={developerImage}
-                    alt="Professional Developer"
+                    alt="Anthony - Professional Full-Stack Web Developer and Web App Designer based in Nigeria serving clients in USA, UK, Europe and Africa"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-auto"
