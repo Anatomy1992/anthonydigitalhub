@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -83,6 +84,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Contact Anthony Digital Hub | Hire Web Developer Nigeria"
+        description="Contact Anthony Digital Hub for your web development project. Email: ayodeleanthonyo@gmail.com, WhatsApp: +234 905 770 7072. Based in Lagos, Nigeria, serving clients globally."
+        keywords="contact web developer Nigeria, hire full-stack developer, web development quote, Lagos web developer contact"
+        canonicalPath="/contact"
+      />
       <Navbar />
 
       {/* Hero Section with Banner */}
