@@ -14,10 +14,10 @@ import dashboard1 from "@/assets/portfolio/dashboard-1.jpg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { StatsCounter } from "@/components/AnimatedCounter";
 import HeroSlider from "@/components/HeroSlider";
-
 // Hero slides data
 const heroSlides = [
   { type: "video" as const, src: heroVideo },
@@ -122,6 +122,12 @@ const whyChoose = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Anthony Digital Hub | Full-Stack Web Developer Nigeria - Web Design & Development"
+        description="Anthony Digital Hub - Professional full-stack web developer in Lagos, Nigeria. Expert in React, Node.js, TypeScript, web design, web app development, and e-commerce solutions. Serving clients in USA, UK, Europe & Africa."
+        keywords="web developer Nigeria, full-stack developer Lagos, React developer, web design Nigeria, web app development, e-commerce developer, UI/UX designer Nigeria, Anthony Digital Hub, freelance web developer"
+        canonicalPath="/"
+      />
       <Navbar />
 
       {/* Hero Section with Slider */}
@@ -129,7 +135,7 @@ const Index = () => {
         <HeroSlider slides={heroSlides} interval={15000} />
 
         <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -164,7 +170,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Button variant="hero" size="xl" asChild>

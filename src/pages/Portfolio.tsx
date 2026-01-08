@@ -4,6 +4,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import bannerBg from "@/assets/banner-bg.jpg";
@@ -349,6 +350,12 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Portfolio | Web Development Projects - E-commerce, SaaS, Mobile Apps"
+        description="Explore Anthony Digital Hub's portfolio of 30+ successful web development projects. E-commerce platforms, mobile app UIs, corporate websites, analytics dashboards, and SaaS solutions."
+        keywords="web development portfolio Nigeria, React projects, e-commerce website examples, SaaS development, mobile app UI design, web design portfolio"
+        canonicalPath="/portfolio"
+      />
       <Navbar />
 
       {/* Hero Section */}

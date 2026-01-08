@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import bannerBg from "@/assets/banner-bg.jpg";
@@ -11,7 +12,6 @@ import uiuxImage from "@/assets/services/ui-ux-design.jpg";
 import webdevImage from "@/assets/services/web-development.jpg";
 import fullstackImage from "@/assets/services/fullstack.jpg";
 import ecommerceImage from "@/assets/services/ecommerce.jpg";
-
 const services = [
   {
     icon: Palette,
@@ -83,6 +83,12 @@ const pricingOptions = [
 const Services = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Web Development Services Nigeria | Web Design, Full-Stack & E-commerce"
+        description="Professional web development services in Nigeria. Web Design (UI/UX), Web App Development, Full-Stack Solutions, and E-commerce Development. Custom solutions for businesses in USA, UK, Europe & Africa."
+        keywords="web development services Nigeria, web design services, full-stack development, e-commerce development Nigeria, React development services, UI/UX design Lagos"
+        canonicalPath="/services"
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -131,8 +137,8 @@ const Services = () => {
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}
               >
-                <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <div className="flex items-center gap-4 mb-6">
+                <div className={`text-center lg:text-left ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                  <div className="flex items-center gap-4 mb-6 justify-center lg:justify-start">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                       <service.icon className="w-7 h-7 text-primary" />
                     </div>
@@ -143,7 +149,7 @@ const Services = () => {
                   <p className="text-muted-foreground mb-6 text-lg">
                     {service.description}
                   </p>
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 inline-block text-left">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
@@ -153,7 +159,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="flex justify-center lg:justify-start">
                     <Button variant="hero" asChild>
                       <Link to="/contact">
                         Get Started

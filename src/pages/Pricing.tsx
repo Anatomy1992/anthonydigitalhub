@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { Button } from "@/components/ui/button";
 import bannerBg from "@/assets/banner-bg.jpg";
-
 const servicePricing = [
   {
     service: "Web Design (UI/UX)",
@@ -207,6 +207,12 @@ const hourlyRates = [
 const Pricing = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Web Development Pricing Nigeria | Transparent Rates for Web Design & Development"
+        description="Transparent web development pricing from Anthony Digital Hub. Web Design from $500, Web Apps from $1,500, Full-Stack from $2,000, E-commerce from $800. Hourly rates available."
+        keywords="web development pricing Nigeria, web design cost, full-stack development rates, e-commerce website cost, freelance web developer rates"
+        canonicalPath="/pricing"
+      />
       <Navbar />
 
       {/* Hero Section */}

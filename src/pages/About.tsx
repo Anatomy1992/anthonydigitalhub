@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
+import SEOHead from "@/components/SEOHead";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedComponents";
 import { StatsCounter } from "@/components/AnimatedCounter";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,12 @@ const values = [
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="About Anthony | Full-Stack Web Developer Nigeria - 8+ Years Experience"
+        description="Learn about Anthony Oluwatobi Ayodele, a passionate full-stack web developer with 8+ years experience. Specializing in React, Node.js, TypeScript, and building scalable web applications for clients worldwide."
+        keywords="about Anthony Digital Hub, web developer biography, full-stack developer experience, React developer Nigeria, web development journey"
+        canonicalPath="/about"
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -62,7 +69,7 @@ const About = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto px-4"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-4 backdrop-blur-sm">
               About Me
